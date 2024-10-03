@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 
 # Goodreads App - Spring Boot Edition
 
@@ -80,3 +81,7 @@ Dress Rental App uygulaması şu endpointleri sunar:
 
 Bu proje, İrem Yiğit tarafından geliştirilmiştir.
 
+=======
+# Goodreads-App
+It is the graduation project of the Java backend academy organized by Sisterslab
+>>>>>>> ad8ad431efb05c113c66b22ca219e457e83b2d98
