@@ -1,5 +1,3 @@
-<<<<<<< HEAD
-
 # Goodreads App - Spring Boot Edition
 
 Goodreads App, Java Spring Boot ile geliştirilmiş bir backend uygulamasıdır. Bu proje, web servisleri oluşturma, RESTful API geliştirme, Spring Boot ile veritabanı işlemleri ve hata yönetimi gibi konuları pratik etmek için hazırlanmıştır.
