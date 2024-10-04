@@ -63,9 +63,9 @@ To run the project, you must have the following software installed on your syste
 
 ## API Endpoints
 
-###The Goodreads App offers the following endpoints:
+### The Goodreads App offers the following endpoints:
 
-####User Management;
+#### User Management
 
 - `POST /api/register`           : Provides control over logging into the system.
 - `GET /api/users/all`           : Gets a list of all users.
@@ -73,7 +73,7 @@ To run the project, you must have the following software installed on your syste
 - `PUT /api/users/update/{id}`   : Provides the update of user information by id.
 - `DELETE /api/users/delete/{id}`: Provides the deletion of a specific user by id.
 
-####Book Management;
+#### Book Management
 
 - `POST /api/books/add`          : Provides the process of adding a new book.
 - `GET /api/books/all`           : Brings the list of all books.
@@ -82,7 +82,7 @@ To run the project, you must have the following software installed on your syste
 - `PUT /api/books/update/{id}`   : Provides the ability to update book information by id.
 - `DELETE /api/books/delete/{id}`: Provides the ability to delete a specific book by id.
 
-####BookShelf Management;
+#### BookShelf Management
 
 - `POST /api/bookshelf/add`                             : Allows adding a new library.
 - `GET /api/bookshelf/{username}`                       : Allows getting the user's book list.
