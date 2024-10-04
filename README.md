@@ -1,6 +1,4 @@
-<<<<<<< HEAD
-
-# Goodreads App - Spring Boot Edition
+# Goodreads App
 
 Goodreads App, Java Spring Boot ile geliştirilmiş bir backend uygulamasıdır. Bu proje, web servisleri oluşturma, RESTful API geliştirme, Spring Boot ile veritabanı işlemleri ve hata yönetimi gibi konuları pratik etmek için hazırlanmıştır.
 
@@ -29,13 +27,12 @@ Projeyi çalıştırmak için sisteminizde aşağıdaki yazılımların kurulu o
 1. **Projeyi klonlayın:**
 
    ```bash
-   git clone https://github.com/JavaBackendGelistirmeAkademisi/Hafta-6-DressRentalApp-Day2-SpringBoot.git
-   cd Hafta-6-DressRentalApp-Day2-SpringBoot
+   git clone https://github.com/irem-yigit/goodreads-app.git
    ```
 
 2. **Veritabanını yapılandırın:**
 
-    - `dressrental` adında bir veritabanı oluşturun (Docker ile çalıştırılacaksa bu adım gerekmez).
+    - `goodreads` adında bir veritabanı oluşturun (Docker ile çalıştırılacaksa bu adım gerekmez).
     - `src/main/resources` klasöründeki `application.properties` dosyasını veritabanı bilgilerinize göre güncelleyin.
 
 3. **Projeyi Maven ile derleyin:**
