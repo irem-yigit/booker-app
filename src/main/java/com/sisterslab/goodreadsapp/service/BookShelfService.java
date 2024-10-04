@@ -30,9 +30,9 @@ public class BookShelfService {
     }
 
     //Okuma Listesi oluşturma
-    public BookShelf createBookShelf(User user, String name, BookShelfType type) throws Exception {
-        User foundUser = userRepository.findByUserName(user.getUsername())
-                .orElseThrow(() -> new UserNotFoundException("Kullanıcı bulunamadı"));
+    public BookShelf createBookShelf(String username, String name, BookShelfType type) throws Exception {
+        User user = userRepository.findByUsername(username)
+                .orElseThrow(() -> new UserNotFoundException("User not found."));
 
         BookShelf bookShelf = new BookShelf();
         bookShelf.setName(name);
@@ -41,21 +41,11 @@ public class BookShelfService {
 
         return bookShelfRepository.save(bookShelf);
     }
-    /*public ReadingList createReadingList(String username, String name) throws Exception {
-        User user = userRepository.findByUsername(username)
-            .orElseThrow(() -> new Exception("Kullanıcı bulunamadı"));
 
-        ReadingList readingList = new ReadingList();
-        readingList.setName(name);
-        readingList.setUser(user);
-
-        return readingListRepository.save(readingList);
-    }*/
-
-    //Kullanıcının Kitap listesini getirme işlemi
+    //Kullanıcının Kitap listesini, kitaplık türüne(BookShelfType) göre getirme işlemi
     public List<BookShelf> getUserBookShelf(String username, BookShelfType type) throws Exception {
         User user = userRepository.findByUsername(username)
-                .orElseThrow(() -> new UserNotFoundException("Kullanıcı bulunamadı"));
+                .orElseThrow(() -> new UserNotFoundException("User not found."));
 
         return bookShelfRepository.findByUserAndType(user, type);   // Liste türüne göre filtreleme
     }
@@ -63,10 +53,10 @@ public class BookShelfService {
     //Okuma listesine kitap ekleme
     public BookShelf addBookToBookShelf(Long bookShelfId, Long bookId) throws Exception {
         BookShelf bookShelf = bookShelfRepository.findById(bookShelfId)
-                .orElseThrow(() -> new BookShelfNotFoundException("Okuma listesi bulunamadı"));
+                .orElseThrow(() -> new BookShelfNotFoundException("Bookshelf not found."));
 
         Book book = bookRepository.findById(bookId)
-                .orElseThrow(() -> new BookNotFoundException("Kitap bulunamadı"));
+                .orElseThrow(() -> new BookNotFoundException("Book not found."));
 
         bookShelf.getBooks().add(book);
         return bookShelfRepository.save(bookShelf);
@@ -75,10 +65,10 @@ public class BookShelfService {
     //Okuma Listesinden kitap silme
     public BookShelf removeBookFromBookShelf(Long bookShelfId, Long bookId) throws Exception {
         BookShelf bookShelf = bookShelfRepository.findById(bookShelfId)
-                .orElseThrow(() -> new BookShelfNotFoundException("Okuma listesi bulunamadı"));
+                .orElseThrow(() -> new BookShelfNotFoundException("Bookshelf not found."));
 
         Book book = bookRepository.findById(bookId)
-                .orElseThrow(() -> new BookNotFoundException("Kitap bulunamadı"));
+                .orElseThrow(() -> new BookNotFoundException("Book not found."));
 
         bookShelf.getBooks().remove(book);
         return bookShelfRepository.save(bookShelf);

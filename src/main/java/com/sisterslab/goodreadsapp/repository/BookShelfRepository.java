@@ -11,6 +11,6 @@ import java.util.List;
 @Repository
 public interface BookShelfRepository extends JpaRepository<BookShelf, Long> {
 
-    List<BookShelf> findByUser(User user);
+    //List<BookShelf> findByUser(User user);
     List<BookShelf> findByUserAndType(User user, BookShelfType type);  // Liste türüne göre sorgu
 }

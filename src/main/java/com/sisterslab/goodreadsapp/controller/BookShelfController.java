@@ -24,22 +24,16 @@ public class BookShelfController {
 
     //Yeni okuma listesi oluşturma
     @PostMapping("/add")
-    public ResponseEntity<BookShelf> createBookShelf(@Valid @RequestBody BookShelfRequestDTO requestDTO) throws Exception {
-        BookShelf bookShelf = bookShelfService.createBookShelf(requestDTO.getName(), requestDTO.getUser().getUsername(),requestDTO.getType());
+    public ResponseEntity<BookShelf> createBookShelf(@Valid @RequestParam String username, @RequestParam String name, @RequestParam BookShelfType type) throws Exception {
+        BookShelf bookShelf = bookShelfService.createBookShelf(username, name, type);
         return ResponseEntity.ok(bookShelf);
     }
 
-    //Kullanıcının Kitap listesini getirme işlemi
-    @GetMapping("/{username}")
-    public ResponseEntity<List<BookShelf>> getUserBookShelf(@PathVariable String username) throws Exception {
-        return ResponseEntity.ok(BookShelfService.getUserBookShelf(username, BookShelfType.READING));
+    //Kullanıcının Kitap listesini, kitaplık türüne(BookShelfType) göre getirme işlemi
+    @GetMapping("/{username}/{type}")
+    public ResponseEntity<List<BookShelf>> getUserBookShelfByType(@PathVariable String username, @PathVariable BookShelfType type) throws Exception {
+        return ResponseEntity.ok(bookShelfService.getUserBookShelf(username, type));
     }
-
-    /*@GetMapping("/{username}/{type}")
-    public ResponseEntity<List<BookShelf>> getUserBookShelfByType(
-            @PathVariable String username, @PathVariable BookShelfType type) throws Exception {
-        return ResponseEntity.ok(bookShelfService.getUserBookShelfByType(username, type));
-    }*/
 
     //Okuma listesine kitap ekleme
     @PostMapping("/{bookshelfId}/books/{bookId}")
@@ -49,13 +43,11 @@ public class BookShelfController {
     }
 
     //Okuma Listesinden kitap silme
-    @DeleteMapping("/{readingListId}/books/{bookId}")
+    @DeleteMapping("/{bookshelfId}/books/{bookId}")
     public ResponseEntity<BookShelf> removeBookFromBookShelf(
             @PathVariable Long bookShelfId, @PathVariable Long bookId) throws Exception {
         return ResponseEntity.ok(bookShelfService.removeBookFromBookShelf(bookShelfId, bookId));
     }
-
-
 
 
 }

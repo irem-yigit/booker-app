@@ -85,6 +85,6 @@ To run the project, you must have the following software installed on your syste
 #### BookShelf Management
 
 - `POST /api/bookshelf/add`                             : Allows adding a new library.
-- `GET /api/bookshelf/{username}`                       : Allows getting the user's book list.
+- `GET /api/bookshelf/{username}/{type}`                       : Allows getting the user's book list.
 - `POST /api/bookshelf/{bookshelfId}/books/{bookId}`    : Allows adding books to the reading list.
-- `DELETE /api/bookshelf/{readingListId}/books/{bookId}`: Allows deleting books from the reading list.
+- `DELETE /api/bookshelf/{bookshelfId}/books/{bookId}`  : Allows deleting books from the reading list.
