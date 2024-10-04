@@ -1,5 +1,6 @@
 package com.sisterslab.goodreadsapp.service;
 
+import com.sisterslab.goodreadsapp.exception.UserNotFoundException;
 import com.sisterslab.goodreadsapp.exception.ValidationException;
 import com.sisterslab.goodreadsapp.model.User;
 import com.sisterslab.goodreadsapp.repository.UserRepository;
@@ -55,10 +56,17 @@ public class UserService implements UserDetailsService {
         return List.of(new SimpleGrantedAuthority(user.getRole()));
     }
 
+    //Kullanıcı güncelleme
+    public User updateUser(User user) {
+        return userRepository.save(user);
+    }
+
     //Kullanıcı silme
     public void deleteUser(Long id) throws Exception{
         User user = userRepository.findById(id)
-                .orElseThrow(() -> new Exception("User not found!"));
+                .orElseThrow(() -> new UserNotFoundException("User not found!"));
         userRepository.delete(user);
     }
+
+
 }

@@ -18,15 +18,18 @@ public class User {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
-    @NotNull(message = "User name cannot be null")
-    @Size(min = 2, max = 50, message = "User name must be between 2 and 50 characters")
-    private String name;
+    @NotNull(message = "Username cannot be null")
+    @Size(min = 2, max = 50, message = "Username must be between 2 and 50 characters")
+    @Column(name = "user_name", nullable = false, unique = true,length = 50)
+    private String username;
 
     @NotNull(message = "Email cannot be null")
     @Email(message = "Email should be valid")
+    @Column(name = "email", nullable = false, unique = true)
     private String email;
 
     @NotNull(message = "Password cannot be null")
+    @Column(name = "password", nullable = false)
     private String password;
 
     @NotNull(message = "Role cannot be null")

@@ -1,57 +1,61 @@
 # Goodreads App
 
-Goodreads App, Java Spring Boot ile geliştirilmiş bir backend uygulamasıdır. Bu proje, web servisleri oluşturma, RESTful API geliştirme, Spring Boot ile veritabanı işlemleri ve hata yönetimi gibi konuları pratik etmek için hazırlanmıştır.
+Goodreads App is a backend application developed with Java Spring Boot. It is the graduation project of the Java backend academy organized by Sisterslab.
 
 
-## Özellikler
+## Technologies 
 
-- **Spring Boot:** RESTful API geliştirmek için kullanılmıştır.
-- **Veritabanı Entegrasyonu:** Spring Data JPA kullanılarak CRUD işlemleri gösterilmiştir.
-- **Hata Yönetimi:** Uygulama genelinde etkili hata yönetimi ve istisna yakalama mekanizmaları uygulanmıştır.
-- **Transaction Yönetimi:** Veritabanı işlemlerinde transaction yönetimi sağlanmıştır.
+- **Java 17:** Main programming language used for backend logic.
+- **Spring Boot:** Used for rapid development of RESTful services.
+- **Spring Data JPA:** A Spring module that simplifies database operations.
+- **Maven:** Project dependency management and compilation operations.
+- **Docker & Docker Compose:** Used to run the application and MySQL database as a container.
+- **MySQL:** Used as a database management system.
+- **Junit - Mockito:** Used for application unit testing.
 
-## Başlangıç
 
-### Gereksinimler
+## Getting Started
 
-Projeyi çalıştırmak için sisteminizde aşağıdaki yazılımların kurulu olması gerekmektedir:
+### Requirements
 
-- Java 17 veya üstü
-- Maven 3.8 veya üstü
-- Docker ve Docker Compose (opsiyonel)
-- IntelliJ IDEA veya başka bir IDE
-- MSSQL veya uyumlu başka bir SQL veritabanı
+To run the project, you must have the following software installed on your system:
 
-### Kurulum
+- Java 17 or later
+- Maven 3.8 or later
+- Docker and Docker Compose (optional)
+- IntelliJ IDEA or another IDE
+- MySQL or another compatible SQL database
 
-1. **Projeyi klonlayın:**
+### Installation
+
+1. **Clone the project:**
 
    ```bash
    git clone https://github.com/irem-yigit/goodreads-app.git
    ```
 
-2. **Veritabanını yapılandırın:**
+2. **Configure the database:**
 
-    - `goodreads` adında bir veritabanı oluşturun (Docker ile çalıştırılacaksa bu adım gerekmez).
-    - `src/main/resources` klasöründeki `application.properties` dosyasını veritabanı bilgilerinize göre güncelleyin.
-
-3. **Projeyi Maven ile derleyin:**
+    - Create a database named `goodreads` (this step is not necessary if running with Docker).
+    - Update the `application.properties` file in the `src/main/resources` folder according to your database information.
+    
+3. **Build the project with Maven:**
 
    ```bash
    mvn clean install
    ```
 
-4. **Spring Boot uygulamasını çalıştırın:**
+4. **Run the Spring Boot application:**
 
    ```bash
    mvn spring-boot:run
    ```
 
-   Uygulama başlatıldıktan sonra API'leri kullanmaya başlayabilirsiniz.
+   Once the application is launched, you can start using the APIs.
 
-5. **Docker ile çalıştırma (opsiyonel):**
+5. **Running with Docker (optional):**
 
-   Uygulamayı Docker ile çalıştırmak için, projenin kök dizininde bulunan `docker-compose.yml` dosyasını kullanabilirsiniz:
+   To run the application with Docker, you can use the `docker-compose.yml` file located in the root directory of the project:
 
    ```bash
    docker-compose up --build
@@ -59,26 +63,28 @@ Projeyi çalıştırmak için sisteminizde aşağıdaki yazılımların kurulu o
 
 ## API Endpoints
 
-Dress Rental App uygulaması şu endpointleri sunar:
+###The Goodreads App offers the following endpoints:
 
-- `GET /dresses`: Tüm mevcut elbiselerin listesini getirir.
-- `POST /dresses`: Envantere yeni bir elbise ekler.
-- `PUT /dresses/{id}`: Mevcut bir elbisenin detaylarını günceller. Kiralama işlemini burada yapıyoruz
+####User Management;
 
-## Kullanılan Teknolojiler
+- `POST /api/register`           : Provides control over logging into the system.
+- `GET /api/users/all`           : Gets a list of all users.
+- `GET /api/users/{id}`          : Gets a specific user by id.
+- `PUT /api/users/update/{id}`   : Provides the update of user information by id.
+- `DELETE /api/users/delete/{id}`: Provides the deletion of a specific user by id.
 
-- **Java 17:** Backend mantığı için kullanılan ana programlama dili.
-- **Spring Boot:** RESTful servislerin hızlı geliştirilmesi için kullanıldı.
-- **Spring Data JPA:** Veritabanı işlemlerini basitleştiren bir Spring modülü.
-- **Maven:** Proje bağımlılık yönetimi ve derleme işlemleri.
-- **Docker & Docker Compose:** Uygulamayı ve MSSQL veritabanını kapsayıcı olarak çalıştırmak için kullanılır.
-- **MSSQL:** Veritabanı yönetim sistemi olarak kullanılmıştır.
+####Book Management;
 
-## Katkıda Bulunanlar
+- `POST /api/books/add`          : Provides the process of adding a new book.
+- `GET /api/books/all`           : Brings the list of all books.
+- `GET /api/books/id/{id}`       : Provides the ability to bring a specific book by id.
+- `GET /api/books/isbn/{isbn}`   : Provides the ability to bring a specific book by isbn.
+- `PUT /api/books/update/{id}`   : Provides the ability to update book information by id.
+- `DELETE /api/books/delete/{id}`: Provides the ability to delete a specific book by id.
 
-Bu proje, İrem Yiğit tarafından geliştirilmiştir.
+####BookShelf Management;
 
-=======
-# Goodreads-App
-It is the graduation project of the Java backend academy organized by Sisterslab
->>>>>>> ad8ad431efb05c113c66b22ca219e457e83b2d98
+- `POST /api/bookshelf/add`                             : Allows adding a new library.
+- `GET /api/bookshelf/{username}`                       : Allows getting the user's book list.
+- `POST /api/bookshelf/{bookshelfId}/books/{bookId}`    : Allows adding books to the reading list.
+- `DELETE /api/bookshelf/{readingListId}/books/{bookId}`: Allows deleting books from the reading list.

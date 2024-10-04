@@ -6,6 +6,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
+import javax.validation.Valid;
 import java.util.List;
 
 @RestController
@@ -21,7 +22,7 @@ public class BookController {
 
     //Kitap ekleme
     @PostMapping("/add")
-    public ResponseEntity<Book> addBook(@RequestBody Book book) {
+    public ResponseEntity<Book> addBook(@Valid @RequestBody Book book) {
         return ResponseEntity.ok(bookService.addBook(book));
     }
 
@@ -45,7 +46,7 @@ public class BookController {
 
     //Kitap güncelleme
     @PutMapping("/update/{id}")
-    public ResponseEntity<Book> updateBook(@PathVariable Long id, @RequestBody Book bookDetails) throws Exception {
+    public ResponseEntity<Book> updateBook(@Valid @PathVariable Long id, @RequestBody Book bookDetails) throws Exception {
         return ResponseEntity.ok(bookService.updateBook(id, bookDetails));
     }
 

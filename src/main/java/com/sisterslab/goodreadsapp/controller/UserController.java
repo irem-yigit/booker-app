@@ -6,6 +6,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
+import javax.validation.Valid;
 import java.util.List;
 
 @RestController
@@ -31,7 +32,15 @@ public class UserController {
         return userService.getUserById(id);
     }
 
-    //Kullanıcıyı id ile silme işlemi ve güncelleme işlemi ekleyebilirim
+    //Kullanıcı bilgilerini id ile güncelleme işlemi
+    @PutMapping("/update/{id}")
+    public ResponseEntity<User> updateUser(@Valid @PathVariable Long id, @RequestBody User user){
+        user.setId(id);
+        User updatedUser = userService.updateUser(user);
+        return ResponseEntity.ok(updatedUser);
+    }
+
+    //Kullanıcıyı id ile silme işlemi
     @DeleteMapping("/delete/{id}")
     public ResponseEntity<Void> deleteUser(@PathVariable Long id) throws Exception {
         userService.deleteUser(id);

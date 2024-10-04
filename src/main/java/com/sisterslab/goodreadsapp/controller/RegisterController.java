@@ -26,7 +26,7 @@ public class RegisterController {
     public User addUser(@Valid @RequestBody UserRequestDTO userRequestDTO) {
         // DTO'dan User modeline dönüştürme
         User user = new User();
-        user.setName(userRequestDTO.getName());
+        user.setUsername(userRequestDTO.getUsername());
         user.setEmail(userRequestDTO.getEmail());
         user.setPassword(userRequestDTO.getPassword());
         user.setRole(userRequestDTO.getRole());

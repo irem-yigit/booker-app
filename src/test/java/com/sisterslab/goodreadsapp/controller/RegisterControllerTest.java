@@ -39,13 +39,13 @@ public class RegisterControllerTest {
     void addUser_ReturnsCreatedUser() throws Exception {
         // given
         UserRequestDTO userRequestDTO = new UserRequestDTO();
-        userRequestDTO.setName("John Doe");
+        userRequestDTO.setUsername("John Doe");
         userRequestDTO.setEmail("john@example.com");
         userRequestDTO.setPassword("password123");
         userRequestDTO.setRole("USER");
 
         User user = new User();
-        user.setName(userRequestDTO.getName());
+        user.setUsername(userRequestDTO.getUsername());
         user.setEmail(userRequestDTO.getEmail());
         user.setPassword(userRequestDTO.getPassword());
         user.setRole(userRequestDTO.getRole());
@@ -55,9 +55,9 @@ public class RegisterControllerTest {
         // when & then
         mockMvc.perform(post("/api/register")
                         .contentType(MediaType.APPLICATION_JSON)
-                        .content("{\"name\":\"John Doe\", \"email\":\"john@example.com\", \"password\":\"password123\", \"role\":\"USER\"}"))
+                        .content("{\"username\":\"John Doe\", \"email\":\"john@example.com\", \"password\":\"password123\", \"role\":\"USER\"}"))
                 .andExpect(status().isOk())
-                .andExpect(jsonPath("$.name").value("John Doe"))
+                .andExpect(jsonPath("$.username").value("John Doe"))
                 .andExpect(jsonPath("$.email").value("john@example.com"))
                 .andExpect(jsonPath("$.role").value("USER"));
     }
