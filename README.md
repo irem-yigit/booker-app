@@ -81,7 +81,8 @@ To run the project, you must have the following software installed on your syste
 - `GET /api/users/{id}`          : Gets a specific user by id.
 - `PUT /api/users/update/{id}`   : Provides the update of user information by id.
 - `DELETE /api/users/delete/{id}`: Provides the deletion of a specific user by id.
-
+- 
+![](../../Desktop/Goodreads-api-Swagger-user-controller.png)
 ![](../../Desktop/Goodreads-api-Swagger-user-controller.png)
 ![](../../Desktop/Goodreads-api-Swagger-register-controller.png)
 
