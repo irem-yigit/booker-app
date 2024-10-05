@@ -32,7 +32,7 @@ public class Book {
     private String publisher;
 
     @NotNull(message = "Isbn cannot be null")
-    @Size(message = "ISBN must be between 13 characters")
+    @Size(min = 13, max = 13, message = "ISBN must be between 13 characters") //
     @Column(name = "book_isbn", nullable = false, unique = true)
     private String isbn;
 

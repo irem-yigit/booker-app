@@ -8,6 +8,7 @@ Goodreads App is a backend application developed with Java Spring Boot. It is th
 - **Java 17:** Main programming language used for backend logic.
 - **Spring Boot v3.3.3:** Used for rapid development of RESTful services.
 - **Spring Data JPA:** A Spring module that simplifies database operations.
+- **Spring Security:** A Spring module that manages security, authentication and authorization processes.
 - **Maven:** Project dependency management and compilation operations.
 - **Docker & Docker Compose:** Used to run the application and MySQL database as a container.
 - **MySQL:** Used as a database management system.

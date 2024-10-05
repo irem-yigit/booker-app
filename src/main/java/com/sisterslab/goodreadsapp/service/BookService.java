@@ -5,10 +5,8 @@ import com.sisterslab.goodreadsapp.exception.DublicateBookException;
 import com.sisterslab.goodreadsapp.model.Book;
 import com.sisterslab.goodreadsapp.repository.BookRepository;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.cglib.core.DuplicatesPredicate;
 import org.springframework.stereotype.Service;
 
-import java.util.Collections;
 import java.util.List;
 
 @Service
