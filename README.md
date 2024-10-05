@@ -6,7 +6,7 @@ Goodreads App is a backend application developed with Java Spring Boot. It is th
 ## Technologies 
 
 - **Java 17:** Main programming language used for backend logic.
-- **Spring Boot:** Used for rapid development of RESTful services.
+- **Spring Boot v3.3.3:** Used for rapid development of RESTful services.
 - **Spring Data JPA:** A Spring module that simplifies database operations.
 - **Maven:** Project dependency management and compilation operations.
 - **Docker & Docker Compose:** Used to run the application and MySQL database as a container.
@@ -25,6 +25,7 @@ To run the project, you must have the following software installed on your syste
 - Docker and Docker Compose (optional)
 - IntelliJ IDEA or another IDE
 - MySQL or another compatible SQL database
+- Swagger or Postman
 
 ### Installation
 
@@ -60,6 +61,14 @@ To run the project, you must have the following software installed on your syste
    ```bash
    docker-compose up --build
    ```
+   
+## API Test
+
+   **Swagger URL:**
+
+   ```bash
+   http://localhost:8080/swagger-ui/index.html#//v3/api-docs
+   ```
 
 ## API Endpoints
 
@@ -73,6 +82,9 @@ To run the project, you must have the following software installed on your syste
 - `PUT /api/users/update/{id}`   : Provides the update of user information by id.
 - `DELETE /api/users/delete/{id}`: Provides the deletion of a specific user by id.
 
+![](../../Desktop/Goodreads-api-Swagger-user-controller.png)
+![](../../Desktop/Goodreads-api-Swagger-register-controller.png)
+
 #### Book Management
 
 - `POST /api/books/add`          : Provides the process of adding a new book.
@@ -82,9 +94,18 @@ To run the project, you must have the following software installed on your syste
 - `PUT /api/books/update/{id}`   : Provides the ability to update book information by id.
 - `DELETE /api/books/delete/{id}`: Provides the ability to delete a specific book by id.
 
+![](../../Desktop/Goodreads-api-Swagger-book-controller.png)
+
 #### BookShelf Management
 
 - `POST /api/bookshelf/add`                             : Allows adding a new library.
 - `GET /api/bookshelf/{username}/{type}`                       : Allows getting the user's book list.
 - `POST /api/bookshelf/{bookshelfId}/books/{bookId}`    : Allows adding books to the reading list.
 - `DELETE /api/bookshelf/{bookshelfId}/books/{bookId}`  : Allows deleting books from the reading list.
+
+![](../../Desktop/Goodreads-api-Swagger-book-shelf-controller.png)
+
+#### Schemas
+
+![](../../Desktop/Goodreads-api-Swagger-Schemas-1.png)
+![](../../Desktop/Goodreads-api-Swagger-Schemas-2.png)

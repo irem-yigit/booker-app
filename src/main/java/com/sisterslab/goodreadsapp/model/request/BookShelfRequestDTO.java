@@ -7,6 +7,7 @@ import jakarta.persistence.*;
 import lombok.Getter;
 import lombok.Setter;
 
+import javax.validation.constraints.NotNull;
 import java.util.HashSet;
 import java.util.Set;
 
@@ -14,9 +15,11 @@ import java.util.Set;
 @Setter
 public class BookShelfRequestDTO {
 
-    @Column(nullable = false)
+    @NotNull(message = "BookShelf name cannot be null")
+    @Column(name = "bookshelf_name", nullable = false,length = 50)
     private String name;
 
+    @NotNull(message = "User cannot be null")
     @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "user_id", nullable = false)
     private User user;
@@ -29,6 +32,7 @@ public class BookShelfRequestDTO {
     )
     private Set<Book> books = new HashSet<>();
 
+    @NotNull(message = "BookShelf type cannot be null")
     @Enumerated(EnumType.STRING)
     @Column(nullable = false)
     private BookShelfType type;  // Enum alanı ekleniyor
