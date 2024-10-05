@@ -82,8 +82,8 @@ To run the project, you must have the following software installed on your syste
 - `PUT /api/users/update/{id}`   : Provides the update of user information by id.
 - `DELETE /api/users/delete/{id}`: Provides the deletion of a specific user by id.
 
-![](../../Desktop/Goodreads-api-Swagger-user-controller.png)
-![](../../Desktop/Goodreads-api-Swagger-register-controller.png)
+![Goodreads-api-Swagger-user-controller](https://github.com/user-attachments/assets/06b07f6c-f03c-4ab5-843c-af321b29dbc6)
+![Goodreads-api-Swagger-register-controller](https://github.com/user-attachments/assets/416757c0-3c83-464b-82cf-a55a64872450)
 
 #### Book Management
 
@@ -93,8 +93,8 @@ To run the project, you must have the following software installed on your syste
 - `GET /api/books/isbn/{isbn}`   : Provides the ability to bring a specific book by isbn.
 - `PUT /api/books/update/{id}`   : Provides the ability to update book information by id.
 - `DELETE /api/books/delete/{id}`: Provides the ability to delete a specific book by id.
-
-![](../../Desktop/Goodreads-api-Swagger-book-controller.png)
+  
+![Goodreads-api-Swagger-book-controller](https://github.com/user-attachments/assets/febb025b-06d3-45ed-8670-f00a357706a4)
 
 #### BookShelf Management
 
@@ -103,10 +103,9 @@ To run the project, you must have the following software installed on your syste
 - `POST /api/bookshelf/{bookshelfId}/books/{bookId}`    : Allows adding books to the reading list.
 - `DELETE /api/bookshelf/{bookshelfId}/books/{bookId}`  : Allows deleting books from the reading list.
 
-![](../../Desktop/Goodreads-api-Swagger-book-shelf-controller.png)
+![Goodreads-api-Swagger-book-shelf-controller](https://github.com/user-attachments/assets/16c909a0-8178-4392-9cba-e4eb3fb4a039)
 
 #### Schemas
 
-![](../../Desktop/Goodreads-api-Swagger-Schemas-1.png)
-![](../../Desktop/Goodreads-api-Swagger-Schemas-2.png)
-
+![Goodreads-api-Swagger-Schemas-1](https://github.com/user-attachments/assets/6385ea7c-a861-4c3a-9070-fd264057ceed)
+![Goodreads-api-Swagger-Schemas-2](https://github.com/user-attachments/assets/3a289396-6ee5-4ed9-a039-f6e936261d82)
