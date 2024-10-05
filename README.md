@@ -67,7 +67,7 @@ To run the project, you must have the following software installed on your syste
    **Swagger URL:**
 
    ```bash
-   http://localhost:8080/swagger-ui/index.html#//v3/api-docs
+   http://localhost:8080/swagger-ui/index.html#/v3/api-docs
    ```
 
 ## API Endpoints
@@ -109,3 +109,4 @@ To run the project, you must have the following software installed on your syste
 
 ![](../../Desktop/Goodreads-api-Swagger-Schemas-1.png)
 ![](../../Desktop/Goodreads-api-Swagger-Schemas-2.png)
+
