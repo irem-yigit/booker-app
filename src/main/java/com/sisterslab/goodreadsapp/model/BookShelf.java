@@ -38,5 +38,5 @@ public class BookShelf {
     @NotNull(message = "BookShelf type cannot be null")
     @Enumerated(EnumType.STRING)
     @Column(nullable = false)
-    private BookShelfType type;  // Enum alanı ekleniyor
+    private BookShelfType type;
 }

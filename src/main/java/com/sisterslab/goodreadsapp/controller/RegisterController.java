@@ -24,7 +24,6 @@ public class RegisterController {
 
     @PostMapping("/register")
     public User addUser(@Valid @RequestBody UserRequestDTO userRequestDTO) {
-        // DTO'dan User modeline dönüştürme
         User user = new User();
         user.setUsername(userRequestDTO.getUsername());
         user.setEmail(userRequestDTO.getEmail());

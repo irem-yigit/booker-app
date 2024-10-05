@@ -26,8 +26,9 @@ public class BookRequestDTO {
     private String publisher;
 
     @NotNull(message = "Isbn cannot be null")
+    @Size(message = "ISBN must be between 13 characters")
     @Column(name = "book_isbn", nullable = false, unique = true)
-    private String isbn;            // TODO: International Standard Book Number --> 13 haneli olmak zorunda sorgusu eklenmeli!!
+    private String isbn;
 
     @NotNull(message = "Page count cannot be null")
     @Column(name = "book_pagecount", nullable = false)
