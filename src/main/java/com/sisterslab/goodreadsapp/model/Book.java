@@ -39,4 +39,5 @@ public class Book {
     @NotNull(message = "Page count cannot be null")
     @Column(name = "book_pagecount", nullable = false)
     private int pageCount;
+
 }
