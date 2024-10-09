@@ -110,4 +110,3 @@ To run the project, you must have the following software installed on your syste
 
 ![Goodreads-api-Swagger-Schemas-1](https://github.com/user-attachments/assets/6385ea7c-a861-4c3a-9070-fd264057ceed)
 ![Goodreads-api-Swagger-Schemas-2](https://github.com/user-attachments/assets/3a289396-6ee5-4ed9-a039-f6e936261d82)
-test
