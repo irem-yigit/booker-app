@@ -33,7 +33,7 @@ To run the project, you must have the following software installed on your syste
 1. **Clone the project:**
 
    ```bash
-   git clone https://github.com/irem-yigit/goodreads-app.git
+   git clone https://github.com/irem-yigit/booker-app.git
    ```
 
 2. **Configure the database:**
