@@ -73,7 +73,7 @@ To run the project, you must have the following software installed on your syste
 
 ## API Endpoints
 
-### The Goodreads App offers the following endpoints:
+### The Booker App offers the following endpoints:
 
 #### User Management
 
