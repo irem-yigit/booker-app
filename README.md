@@ -38,7 +38,7 @@ To run the project, you must have the following software installed on your syste
 
 2. **Configure the database:**
 
-    - Create a database named `goodreads` (this step is not necessary if running with Docker).
+    - Create a database named `booker` (this step is not necessary if running with Docker).
     - Update the `application.properties` file in the `src/main/resources` folder according to your database information.
     
 3. **Build the project with Maven:**
