@@ -22,6 +22,7 @@ public class RegisterController {
         this.userService = userService;
     }
 
+    //CREATE - Register user
     @PostMapping("/register")
     public User addUser(@Valid @RequestBody UserRequestDTO userRequestDTO) {
         User user = new User();

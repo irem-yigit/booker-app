@@ -20,19 +20,19 @@ public class UserController {
         this.userService = userService;
     }
 
-    // Tüm kullanıcıları listeleme işlemi
+    //READ - List all users
     @GetMapping("/all")
     public List<User> getAllUsers() {
         return userService.getAllUsers();
     }
 
-    // Belirli bir kullanıcıyı ID ile getirme işlemi
+    //READ -  List a user by ID
     @GetMapping("/{id}")
     public User getUserById(@PathVariable Long id) {
         return userService.getUserById(id);
     }
 
-    //Kullanıcı bilgilerini id ile güncelleme işlemi
+    //UPDATE - Update the user by id
     @PutMapping("/update/{id}")
     public ResponseEntity<User> updateUser(@Valid @PathVariable Long id, @RequestBody User user){
         user.setId(id);
@@ -40,7 +40,7 @@ public class UserController {
         return ResponseEntity.ok(updatedUser);
     }
 
-    //Kullanıcıyı id ile silme işlemi
+    //DELETE - Delete the user by id
     @DeleteMapping("/delete/{id}")
     public ResponseEntity<Void> deleteUser(@PathVariable Long id) throws Exception {
         userService.deleteUser(id);

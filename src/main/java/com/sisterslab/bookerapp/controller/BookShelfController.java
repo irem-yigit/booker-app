@@ -21,27 +21,27 @@ public class BookShelfController {
         this.bookShelfService = bookShelfService;
     }
 
-    //Yeni okuma listesi oluşturma
+    //CREATE - Add bookShelf
     @PostMapping("/add")
     public ResponseEntity<BookShelf> createBookShelf(@Valid @RequestParam String username, @RequestParam String name, @RequestParam BookShelfType type) throws Exception {
         BookShelf bookShelf = bookShelfService.createBookShelf(username, name, type);
         return ResponseEntity.ok(bookShelf);
     }
 
-    //Kullanıcının Kitap listesini, kitaplık türüne(BookShelfType) göre getirme işlemi
+    //READ - List User's Book list by BookShelfType
     @GetMapping("/{username}/{type}")
     public ResponseEntity<List<BookShelf>> getUserBookShelfByType(@PathVariable String username, @PathVariable BookShelfType type) throws Exception {
         return ResponseEntity.ok(bookShelfService.getUserBookShelf(username, type));
     }
 
-    //Okuma listesine kitap ekleme
+    //CREATE - Add book to the BookShelf
     @PostMapping("/{bookshelfId}/books/{bookId}")
     public ResponseEntity<BookShelf> addBookToBookShelf(
             @Valid @PathVariable Long bookShelfId, @PathVariable Long bookId) throws Exception {
         return ResponseEntity.ok(bookShelfService.addBookToBookShelf(bookShelfId, bookId));
     }
 
-    //Okuma Listesinden kitap silme
+    //DELETE - Delete book from the BookShelf
     @DeleteMapping("/{bookshelfId}/books/{bookId}")
     public ResponseEntity<BookShelf> removeBookFromBookShelf(
             @PathVariable Long bookShelfId, @PathVariable Long bookId) throws Exception {

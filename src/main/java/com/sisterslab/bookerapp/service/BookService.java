@@ -19,7 +19,6 @@ public class BookService {
         this.bookRepository = bookRepository;
     }
 
-    //Yeni kitap ekleme
     public Book addBook(Book book) {
         if (bookRepository.existsByTitleAndAuthorAndPublisher(book.getTitle(), book.getAuthor(),book.getPublisher())){
             throw new DublicateBookException("Book already exists.");
@@ -27,22 +26,18 @@ public class BookService {
         return bookRepository.save(book);
     }
 
-    //Tüm kitapları listeleme
     public List<Book> getAllBooks() {
         return bookRepository.findAll();
     }
 
-    //Belirli bir kitabı id ile getirme
     public Book getBookById(Long id){
         return bookRepository.findById(id).orElseThrow();
     }
 
-    //Belirli bir kitabı isbn ile getirme
     public Book getBookByIsbn(String isbn){
         return bookRepository.findByIsbn(isbn).orElseThrow();
     }
 
-    //Kitap güncelleme
     public Book updateBook(Long id, Book bookDetails) throws Exception {
         Book book = bookRepository.findById(id)
                 .orElseThrow(() -> new BookNotFoundException("Book not found"));
@@ -56,7 +51,6 @@ public class BookService {
         return bookRepository.save(book);
     }
 
-    //Kitap silme
     public void deleteBook(Long id) throws Exception {
         Book book = bookRepository.findById(id)
                 .orElseThrow(() -> new BookNotFoundException("Book not found"));

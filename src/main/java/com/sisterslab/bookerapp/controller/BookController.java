@@ -20,37 +20,37 @@ public class BookController {
         this.bookService = bookService;
     }
 
-    //Kitap ekleme
+    //CREATE - Add book
     @PostMapping("/add")
     public ResponseEntity<Book> addBook(@Valid @RequestBody Book book) {
         return ResponseEntity.ok(bookService.addBook(book));
     }
 
-    //Tüm kitapları listeleme
+    //READ - List all books
     @GetMapping("/all")
     public ResponseEntity<List<Book>> getAllBooks() {
         return ResponseEntity.ok(bookService.getAllBooks());
     }
 
-    //Belirli bir kitabı id ile getirme
+    //READ - List a book by ID
     @GetMapping("/id/{id}")
     public Book getBookById(@PathVariable Long id){
         return bookService.getBookById(id);
     }
 
-    //Belirli bir kitabı isbn ile getirme
+    //READ - List a book by isbn
     @GetMapping("/isbn/{isbn}")
     public Book getBookByIsbn(@PathVariable String isbn){
         return bookService.getBookByIsbn(isbn);
     }
 
-    //Kitap güncelleme
+    //UPDATE - Update book
     @PutMapping("/update/{id}")
     public ResponseEntity<Book> updateBook(@Valid @PathVariable Long id, @RequestBody Book bookDetails) throws Exception {
         return ResponseEntity.ok(bookService.updateBook(id, bookDetails));
     }
 
-    //Kitap silme
+    //DELETE - Delete book
     @DeleteMapping("/delete/{id}")
     public ResponseEntity<Void> deleteBook(@PathVariable Long id) throws Exception {
         bookService.deleteBook(id);

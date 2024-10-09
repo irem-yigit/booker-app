@@ -26,7 +26,6 @@ public class UserService implements UserDetailsService {
         this.userRepository = userRepository;
     }
 
-    // Yeni kullanıcı ekleme
     public User addUser(User user) {
         if (userRepository.existsByEmail(user.getEmail())){
             throw new ValidationException("There are users registered with this e-mail address.");
@@ -35,16 +34,15 @@ public class UserService implements UserDetailsService {
         return userRepository.save(user);
     }
 
-    // Tüm kullanıcıları listeleme
     public List<User> getAllUsers() {
         return userRepository.findAll();
     }
 
-    // ID ile kullanıcı bulma
     public User getUserById(Long id) {
         return userRepository.findById(id).orElseThrow();
     }
 
+    //Encryption, registration
     @Override
     public UserDetails loadUserByUsername(String email) throws UsernameNotFoundException {
         User user = userRepository.findByEmail(email)
@@ -56,17 +54,13 @@ public class UserService implements UserDetailsService {
         return List.of(new SimpleGrantedAuthority(user.getRole()));
     }
 
-    //Kullanıcı güncelleme
     public User updateUser(User user) {
         return userRepository.save(user);
     }
 
-    //Kullanıcı silme
     public void deleteUser(Long id) throws Exception{
         User user = userRepository.findById(id)
                 .orElseThrow(() -> new UserNotFoundException("User not found!"));
         userRepository.delete(user);
     }
-
-
 }
