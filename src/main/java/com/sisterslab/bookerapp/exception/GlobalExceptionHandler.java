@@ -58,10 +58,4 @@ public class GlobalExceptionHandler {
     public ResponseEntity<?> handleResourceNotFoundException(ResourceNotFoundException ex, WebRequest request) {
         return new ResponseEntity<>(ex.getMessage(), HttpStatus.NOT_FOUND);
     }
-
-    //400 Bad Request cases
-    @ExceptionHandler(InvalidInputException.class)
-    public ResponseEntity<?> handleInvalidInputException(InvalidInputException ex, WebRequest request) {
-        return new ResponseEntity<>(ex.getMessage(), HttpStatus.BAD_REQUEST);
-    }
 }
