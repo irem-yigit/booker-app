@@ -1,8 +1,6 @@
 package com.sisterslab.bookerapp.service;
 
-import com.sisterslab.bookerapp.exception.BookNotFoundException;
-import com.sisterslab.bookerapp.exception.BookShelfNotFoundException;
-import com.sisterslab.bookerapp.exception.UserNotFoundException;
+import com.sisterslab.bookerapp.exception.ResourceNotFoundException;
 import com.sisterslab.bookerapp.model.Book;
 import com.sisterslab.bookerapp.model.BookShelf;
 import com.sisterslab.bookerapp.model.BookShelfType;
@@ -31,7 +29,7 @@ public class BookShelfService {
 
     public BookShelf createBookShelf(String username, String name, BookShelfType type) throws Exception {
         User user = userRepository.findByUsername(username)
-                .orElseThrow(() -> new UserNotFoundException("User not found."));
+                .orElseThrow(() -> new ResourceNotFoundException("User not found."));
 
         BookShelf bookShelf = new BookShelf();
         bookShelf.setName(name);
@@ -43,17 +41,17 @@ public class BookShelfService {
 
     public List<BookShelf> getUserBookShelf(String username, BookShelfType type) throws Exception {
         User user = userRepository.findByUsername(username)
-                .orElseThrow(() -> new UserNotFoundException("User not found."));
+                .orElseThrow(() -> new ResourceNotFoundException("User not found."));
 
         return bookShelfRepository.findByUserAndType(user, type);   // Liste türüne göre filtreleme
     }
 
     public BookShelf addBookToBookShelf(Long bookShelfId, Long bookId) throws Exception {
         BookShelf bookShelf = bookShelfRepository.findById(bookShelfId)
-                .orElseThrow(() -> new BookShelfNotFoundException("Bookshelf not found."));
+                .orElseThrow(() -> new ResourceNotFoundException("Bookshelf not found."));
 
         Book book = bookRepository.findById(bookId)
-                .orElseThrow(() -> new BookNotFoundException("Book not found."));
+                .orElseThrow(() -> new ResourceNotFoundException("Book not found."));
 
         bookShelf.getBooks().add(book);
         return bookShelfRepository.save(bookShelf);
@@ -61,10 +59,10 @@ public class BookShelfService {
 
     public BookShelf removeBookFromBookShelf(Long bookShelfId, Long bookId) throws Exception {
         BookShelf bookShelf = bookShelfRepository.findById(bookShelfId)
-                .orElseThrow(() -> new BookShelfNotFoundException("Bookshelf not found."));
+                .orElseThrow(() -> new ResourceNotFoundException("Bookshelf not found."));
 
         Book book = bookRepository.findById(bookId)
-                .orElseThrow(() -> new BookNotFoundException("Book not found."));
+                .orElseThrow(() -> new ResourceNotFoundException("Book not found."));
 
         bookShelf.getBooks().remove(book);
         return bookShelfRepository.save(bookShelf);

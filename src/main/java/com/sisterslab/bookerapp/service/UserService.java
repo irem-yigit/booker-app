@@ -1,6 +1,6 @@
 package com.sisterslab.bookerapp.service;
 
-import com.sisterslab.bookerapp.exception.UserNotFoundException;
+import com.sisterslab.bookerapp.exception.ResourceNotFoundException;
 import com.sisterslab.bookerapp.exception.ValidationException;
 import com.sisterslab.bookerapp.model.User;
 import com.sisterslab.bookerapp.repository.UserRepository;
@@ -46,7 +46,7 @@ public class UserService implements UserDetailsService {
     @Override
     public UserDetails loadUserByUsername(String email) throws UsernameNotFoundException {
         User user = userRepository.findByEmail(email)
-                .orElseThrow(() -> new UsernameNotFoundException("User not found"));
+                .orElseThrow(() -> new ResourceNotFoundException("User not found"));
         return new org.springframework.security.core.userdetails.User(user.getEmail(), user.getPassword(), getAuthorities(user));
     }
 
@@ -58,9 +58,9 @@ public class UserService implements UserDetailsService {
         return userRepository.save(user);
     }
 
-    public void deleteUser(Long id) throws Exception{
+    public void deleteUser(Long id) {
         User user = userRepository.findById(id)
-                .orElseThrow(() -> new UserNotFoundException("User not found!"));
+                .orElseThrow(() -> new ResourceNotFoundException("User not found!"));
         userRepository.delete(user);
     }
 }

@@ -1,7 +1,7 @@
 package com.sisterslab.bookerapp.service;
 
-import com.sisterslab.bookerapp.exception.BookNotFoundException;
-import com.sisterslab.bookerapp.exception.DublicateBookException;
+import com.sisterslab.bookerapp.exception.ResourceNotFoundException;
+import com.sisterslab.bookerapp.exception.ValidationException;
 import com.sisterslab.bookerapp.model.Book;
 import com.sisterslab.bookerapp.repository.BookRepository;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -21,7 +21,7 @@ public class BookService {
 
     public Book addBook(Book book) {
         if (bookRepository.existsByTitleAndAuthorAndPublisher(book.getTitle(), book.getAuthor(),book.getPublisher())){
-            throw new DublicateBookException("Book already exists.");
+            throw new ValidationException("Book already exists.");
         }
         return bookRepository.save(book);
     }
@@ -38,9 +38,9 @@ public class BookService {
         return bookRepository.findByIsbn(isbn).orElseThrow();
     }
 
-    public Book updateBook(Long id, Book bookDetails) throws Exception {
+    public Book updateBook(Long id, Book bookDetails) {
         Book book = bookRepository.findById(id)
-                .orElseThrow(() -> new BookNotFoundException("Book not found"));
+                .orElseThrow(() -> new ResourceNotFoundException("Book not found"));
 
         book.setTitle(bookDetails.getTitle());
         book.setAuthor(bookDetails.getAuthor());
@@ -51,9 +51,9 @@ public class BookService {
         return bookRepository.save(book);
     }
 
-    public void deleteBook(Long id) throws Exception {
+    public void deleteBook(Long id) {
         Book book = bookRepository.findById(id)
-                .orElseThrow(() -> new BookNotFoundException("Book not found"));
+                .orElseThrow(() -> new ResourceNotFoundException("Book not found"));
         bookRepository.delete(book);
     }
 }
