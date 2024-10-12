@@ -42,7 +42,7 @@ public class UserController {
 
     //DELETE - Delete the user by id
     @DeleteMapping("/delete/{id}")
-    public ResponseEntity<Void> deleteUser(@PathVariable Long id) throws Exception {
+    public ResponseEntity<Void> deleteUser(@Valid @PathVariable Long id) {
         userService.deleteUser(id);
         return ResponseEntity.noContent().build();
     }
