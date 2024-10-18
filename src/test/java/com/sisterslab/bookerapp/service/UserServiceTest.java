@@ -159,5 +159,4 @@ public class UserServiceTest {
         verify(userRepository).findByEmail(user.getEmail());
     }
 
-
 }
