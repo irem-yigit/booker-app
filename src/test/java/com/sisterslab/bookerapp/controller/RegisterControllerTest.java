@@ -61,5 +61,4 @@ public class RegisterControllerTest {
                 .andExpect(jsonPath("$.email").value("john@example.com"))
                 .andExpect(jsonPath("$.role").value("USER"));
     }
-
 }
