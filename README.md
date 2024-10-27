@@ -62,7 +62,9 @@ To run the project, you must have the following software installed on your syste
    ```bash
    docker-compose up --build
    ```
-   
+
+## UML DİAGRAM
+
 ## API Test
 
    **Swagger URL:**
