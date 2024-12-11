@@ -64,8 +64,6 @@ To run the project, you must have the following software installed on your syste
    docker-compose up --build
    ```
 
-## UML DİAGRAM
-
 ## API Test
 
    **Swagger URL:**
