@@ -13,12 +13,8 @@ Booker App is a backend application developed with Java Spring Boot. It is the g
         <li><a href="#installation">Installation</a></li>
       </ul>
     </li>
-    <li><a href="#usage">Usage</a></li>
     <li><a href="#api-test">API Test</a></li>
-    <li><a href="#json-data-structure">JSON Data Structure</a></li>
-    <li><a href="#project-structure">Project Structure</a></li>
-    <li><a href="#screenshots">Screenshots</a></li>
-    <li><a href="#additional-information">Additional Information</a></li>
+    <li><a href="#api-endpoints">API Endpoints</a></li>
   </ol>
 </details>
 
