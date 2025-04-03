@@ -1,8 +1,6 @@
-
 # Booker App
-
+<a name="readme-top"></a>
 Booker App is a backend application developed with Java Spring Boot. It is the graduation project of the Java backend academy organized by Sisterslab. This API provides features such as book recommendations, reviews, and reading lists for book lovers.
-
 
 ## Technologies 
 
@@ -14,7 +12,6 @@ Booker App is a backend application developed with Java Spring Boot. It is the g
 - **Docker & Docker Compose:** Used to run the application and MySQL database as a container.
 - **MySQL:** Used as a database management system.
 - **Junit - Mockito:** Used for application unit testing.
-
 
 ## Getting Started
 
@@ -63,6 +60,7 @@ To run the project, you must have the following software installed on your syste
    ```bash
    docker-compose up --build
    ```
+<p align="right"><a href="#readme-top">Back to the Top ↑ </a></p>
 
 ## API Test
 
