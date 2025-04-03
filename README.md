@@ -2,6 +2,26 @@
 <a name="readme-top"></a>
 Booker App is a backend application developed with Java Spring Boot. It is the graduation project of the Java backend academy organized by Sisterslab. This API provides features such as book recommendations, reviews, and reading lists for book lovers.
 
+<details>
+  <summary>Table of Contents</summary>
+  <ol>
+    <li><a href="#technologies">Technologies</a></li>
+    <li>
+      <a href="#getting-started">Getting Started</a>
+      <ul>
+        <li><a href="#requirements">Requirements</a></li>
+        <li><a href="#installation">Installation</a></li>
+      </ul>
+    </li>
+    <li><a href="#usage">Usage</a></li>
+    <li><a href="#api-test">API Test</a></li>
+    <li><a href="#json-data-structure">JSON Data Structure</a></li>
+    <li><a href="#project-structure">Project Structure</a></li>
+    <li><a href="#screenshots">Screenshots</a></li>
+    <li><a href="#additional-information">Additional Information</a></li>
+  </ol>
+</details>
+
 ## Technologies 
 
 - **Java 17:** Main programming language used for backend logic.
