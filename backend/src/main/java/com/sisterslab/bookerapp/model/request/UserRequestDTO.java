@@ -5,6 +5,7 @@ import lombok.Getter;
 import lombok.Setter;
 
 import javax.validation.constraints.Email;
+import javax.validation.constraints.NotBlank;
 import javax.validation.constraints.NotNull;
 import javax.validation.constraints.Size;
 
@@ -12,20 +13,18 @@ import javax.validation.constraints.Size;
 @Setter
 public class UserRequestDTO {
 
-    @NotNull(message = "Username cannot be null")
+    @NotBlank(message = "Username cannot be blank")
     @Size(min = 2, max = 50, message = "Username must be between 2 and 50 characters")
-    @Column(name = "user_name", nullable = false, unique = true,length = 50)
     private String username;
 
-    @NotNull(message = "Email cannot be null")
+    @NotBlank(message = "Email cannot be blank")
     @Email(message = "Email should be valid")
-    @Column(name = "email", nullable = false, unique = true)
     private String email;
 
-    @NotNull(message = "Password cannot be null")
-    @Column(name = "password", nullable = false)
+    @NotBlank(message = "Password cannot be blank")
+    @Size(min = 6, message = "Password must be at least 6 characters")
     private String password;
 
-    @NotNull(message = "Role cannot be null")
+    @NotBlank(message = "Role cannot be blank")
     private String role;
 }

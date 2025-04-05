@@ -4,6 +4,7 @@ import jakarta.persistence.*;
 import lombok.Getter;
 import lombok.Setter;
 
+import javax.validation.constraints.NotBlank;
 import javax.validation.constraints.NotNull;
 import javax.validation.constraints.Size;
 
@@ -17,17 +18,17 @@ public class Book {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
-    @NotNull(message = "Title cannot be null")
+    @NotBlank(message = "Title cannot be blank")
     @Size(min = 2, max = 50, message = "Title must be between 2 and 50 characters")
     @Column(name = "book_title", nullable = false, length = 50)
     private String title;
 
-    @NotNull(message = "Author cannot be null")
+    @NotBlank(message = "Author cannot be blank")
     @Size(min = 2, max = 50, message = "Author must be between 2 and 50 characters")
     @Column(name = "book_author", nullable = false, length = 50)
     private String author;
 
-    @NotNull(message = "Publisher cannot be null")
+    @NotBlank(message = "Publisher cannot be blank")
     @Column(name = "book_publisher", nullable = false)
     private String publisher;
 
