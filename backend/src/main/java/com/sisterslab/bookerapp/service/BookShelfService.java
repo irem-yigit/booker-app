@@ -43,7 +43,7 @@ public class BookShelfService {
         User user = userRepository.findByUsername(username)
                 .orElseThrow(() -> new ResourceNotFoundException("User not found."));
 
-        return bookShelfRepository.findByUserAndType(user, type);   // Liste türüne göre filtreleme
+        return bookShelfRepository.findByUserAndType(user, type);   // Filter by list type
     }
 
     public BookShelf addBookToBookShelf(Long bookShelfId, Long bookId) throws Exception {
@@ -68,6 +68,4 @@ public class BookShelfService {
         return bookShelfRepository.save(bookShelf);
     }
 
-    /*public Object getUserBookShelfByType(String username, BookShelfType type) {
-    }*/
 }

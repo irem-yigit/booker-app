@@ -21,7 +21,7 @@ public class UserController {
     }
 
     //READ - List all users
-    @GetMapping("/all")
+    @GetMapping
     public List<User> getAllUsers() {
         return userService.getAllUsers();
     }
@@ -33,7 +33,7 @@ public class UserController {
     }
 
     //UPDATE - Update the user by id
-    @PutMapping("/update/{id}")
+    @PutMapping("/{id}")
     public ResponseEntity<User> updateUser(@Valid @PathVariable Long id, @RequestBody User user){
         user.setId(id);
         User updatedUser = userService.updateUser(user);
@@ -41,8 +41,8 @@ public class UserController {
     }
 
     //DELETE - Delete the user by id
-    @DeleteMapping("/delete/{id}")
-    public ResponseEntity<Void> deleteUser(@Valid @PathVariable Long id) {
+    @DeleteMapping("/{id}")
+    public ResponseEntity<Void> deleteUser(@PathVariable Long id) {
         userService.deleteUser(id);
         return ResponseEntity.noContent().build();
     }

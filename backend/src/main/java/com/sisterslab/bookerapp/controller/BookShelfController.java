@@ -22,7 +22,7 @@ public class BookShelfController {
     }
 
     //CREATE - Add bookShelf
-    @PostMapping("/add")
+    @PostMapping
     public ResponseEntity<BookShelf> createBookShelf(@Valid @RequestParam String username, @RequestParam String name, @RequestParam BookShelfType type) throws Exception {
         BookShelf bookShelf = bookShelfService.createBookShelf(username, name, type);
         return ResponseEntity.ok(bookShelf);

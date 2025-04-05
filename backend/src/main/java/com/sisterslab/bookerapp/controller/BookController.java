@@ -21,13 +21,13 @@ public class BookController {
     }
 
     //CREATE - Add book
-    @PostMapping("/add")
+    @PostMapping
     public ResponseEntity<Book> addBook(@Valid @RequestBody Book book) {
         return ResponseEntity.ok(bookService.addBook(book));
     }
 
     //READ - List all books
-    @GetMapping("/all")
+    @GetMapping
     public ResponseEntity<List<Book>> getAllBooks() {
         return ResponseEntity.ok(bookService.getAllBooks());
     }
@@ -45,13 +45,13 @@ public class BookController {
     }
 
     //UPDATE - Update book
-    @PutMapping("/update/{id}")
+    @PutMapping("/{id}")
     public ResponseEntity<Book> updateBook(@Valid @PathVariable Long id, @RequestBody Book bookDetails) throws Exception {
         return ResponseEntity.ok(bookService.updateBook(id, bookDetails));
     }
 
     //DELETE - Delete book
-    @DeleteMapping("/delete/{id}")
+    @DeleteMapping("/{id}")
     public ResponseEntity<Void> deleteBook(@PathVariable Long id) throws Exception {
         bookService.deleteBook(id);
         return ResponseEntity.noContent().build();
