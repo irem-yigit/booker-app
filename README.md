@@ -93,28 +93,28 @@ To run the project, you must have the following software installed on your syste
 #### User Management
 
 - `POST /api/register`           : Provides control over logging into the system.
-- `GET /api/users/all`           : Gets a list of all users.
+- `GET /api/users`           : Gets a list of all users.
 - `GET /api/users/{id}`          : Gets a specific user by id.
-- `PUT /api/users/update/{id}`   : Provides the update of user information by id.
-- `DELETE /api/users/delete/{id}`: Provides the deletion of a specific user by id.
+- `PUT /api/users/{id}`   : Provides the update of user information by id.
+- `DELETE /api/users/{id}`: Provides the deletion of a specific user by id.
 
 ![Goodreads-api-Swagger-user-controller](https://github.com/user-attachments/assets/06b07f6c-f03c-4ab5-843c-af321b29dbc6)
 ![Goodreads-api-Swagger-register-controller](https://github.com/user-attachments/assets/416757c0-3c83-464b-82cf-a55a64872450)
 
 #### Book Management
 
-- `POST /api/books/add`          : Provides the process of adding a new book.
-- `GET /api/books/all`           : Brings the list of all books.
+- `POST /api/books`          : Provides the process of adding a new book.
+- `GET /api/books`           : Brings the list of all books.
 - `GET /api/books/id/{id}`       : Provides the ability to bring a specific book by id.
 - `GET /api/books/isbn/{isbn}`   : Provides the ability to bring a specific book by isbn.
-- `PUT /api/books/update/{id}`   : Provides the ability to update book information by id.
-- `DELETE /api/books/delete/{id}`: Provides the ability to delete a specific book by id.
+- `PUT /api/books/{id}`   : Provides the ability to update book information by id.
+- `DELETE /api/books/{id}`: Provides the ability to delete a specific book by id.
   
 ![Goodreads-api-Swagger-book-controller](https://github.com/user-attachments/assets/febb025b-06d3-45ed-8670-f00a357706a4)
 
 #### BookShelf Management
 
-- `POST /api/bookshelf/add`                             : Allows adding a new library.
+- `POST /api/bookshelf`                             : Allows adding a new library.
 - `GET /api/bookshelf/{username}/{type}`                       : Allows getting the user's book list.
 - `POST /api/bookshelf/{bookshelfId}/books/{bookId}`    : Allows adding books to the reading list.
 - `DELETE /api/bookshelf/{bookshelfId}/books/{bookId}`  : Allows deleting books from the reading list.
