@@ -51,7 +51,7 @@ public class UserControllerTest {
         when(userService.getAllUsers()).thenReturn(users);
 
         // when & then
-        mockMvc.perform(get("/api/users/all"))
+        mockMvc.perform(get("/api/users"))
                 .andExpect(status().isOk())
                 .andExpect(content().contentType(MediaType.APPLICATION_JSON))
                 .andExpect(jsonPath("$[0].email").value("user1@example.com"))
