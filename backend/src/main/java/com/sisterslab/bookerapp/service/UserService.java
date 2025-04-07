@@ -3,6 +3,7 @@ package com.sisterslab.bookerapp.service;
 import com.sisterslab.bookerapp.exception.ResourceNotFoundException;
 import com.sisterslab.bookerapp.exception.ValidationException;
 import com.sisterslab.bookerapp.model.entity.User;
+import com.sisterslab.bookerapp.model.enums.UserRole;
 import com.sisterslab.bookerapp.repository.UserRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.core.GrantedAuthority;
@@ -15,6 +16,7 @@ import org.springframework.stereotype.Service;
 
 import java.util.Collection;
 import java.util.List;
+
 
 @Service
 public class UserService implements UserDetailsService {
@@ -30,6 +32,9 @@ public class UserService implements UserDetailsService {
         if (userRepository.existsByEmail(user.getEmail())){
             throw new ValidationException("There are users registered with this e-mail address.");
         }
+        if (user.getRole() == null) {
+            user.setRole(UserRole.USER);
+        }
         user.setPassword(new BCryptPasswordEncoder().encode(user.getPassword()));
         return userRepository.save(user);
     }
@@ -39,7 +44,8 @@ public class UserService implements UserDetailsService {
     }
 
     public User getUserById(Long id) {
-        return userRepository.findById(id).orElseThrow();
+        return userRepository.findById(id)
+                .orElseThrow(() -> new ResourceNotFoundException("User with id " + id + " not found"));
     }
 
     //Encryption, registration
@@ -51,11 +57,18 @@ public class UserService implements UserDetailsService {
     }
 
     private Collection<? extends GrantedAuthority> getAuthorities(User user) {
-        return List.of(new SimpleGrantedAuthority(user.getRole()));
+        return List.of(new SimpleGrantedAuthority("ROLE_" + user.getRole().name()));
     }
 
     public User updateUser(User user) {
-        return userRepository.save(user);
+        User existingUser = userRepository.findById(user.getId())
+                .orElseThrow(() -> new ResourceNotFoundException("User not found!"));
+
+        existingUser.setUsername(user.getUsername());
+        existingUser.setEmail(user.getEmail());
+        existingUser.setRole(user.getRole());
+
+        return userRepository.save(existingUser);
     }
 
     public void deleteUser(Long id) {
