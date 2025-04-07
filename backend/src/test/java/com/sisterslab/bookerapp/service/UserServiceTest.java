@@ -1,6 +1,6 @@
 package com.sisterslab.bookerapp.service;
 
-import com.sisterslab.bookerapp.model.User;
+import com.sisterslab.bookerapp.model.entity.User;
 import com.sisterslab.bookerapp.repository.UserRepository;
 import jakarta.validation.ValidationException;
 import org.junit.Test;

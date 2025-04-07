@@ -1,8 +1,8 @@
 package com.sisterslab.bookerapp.repository;
 
-import com.sisterslab.bookerapp.model.BookShelf;
-import com.sisterslab.bookerapp.model.BookShelfType;
-import com.sisterslab.bookerapp.model.User;
+import com.sisterslab.bookerapp.model.entity.BookShelf;
+import com.sisterslab.bookerapp.model.enums.BookShelfType;
+import com.sisterslab.bookerapp.model.entity.User;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.stereotype.Repository;
 

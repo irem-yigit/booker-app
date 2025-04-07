@@ -1,6 +1,6 @@
 package com.sisterslab.bookerapp.repository;
 
-import com.sisterslab.bookerapp.model.Book;
+import com.sisterslab.bookerapp.model.entity.Book;
 import org.springframework.data.jpa.repository.JpaRepository;
 
 import java.util.Optional;

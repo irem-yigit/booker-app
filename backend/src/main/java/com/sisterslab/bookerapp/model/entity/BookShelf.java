@@ -1,5 +1,6 @@
-package com.sisterslab.bookerapp.model;
+package com.sisterslab.bookerapp.model.entity;
 
+import com.sisterslab.bookerapp.model.enums.BookShelfType;
 import jakarta.persistence.*;
 import lombok.Getter;
 import lombok.Setter;

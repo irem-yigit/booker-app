@@ -1,4 +1,4 @@
-package com.sisterslab.bookerapp.model;
+package com.sisterslab.bookerapp.model.entity;
 
 import jakarta.persistence.*;
 import lombok.Getter;

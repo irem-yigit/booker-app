@@ -1,6 +1,6 @@
 package com.sisterslab.bookerapp.controller;
 
-import com.sisterslab.bookerapp.model.User;
+import com.sisterslab.bookerapp.model.entity.User;
 import com.sisterslab.bookerapp.service.UserService;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;

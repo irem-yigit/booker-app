@@ -1,8 +1,8 @@
 package com.sisterslab.bookerapp.model.request;
 
-import com.sisterslab.bookerapp.model.Book;
-import com.sisterslab.bookerapp.model.BookShelfType;
-import com.sisterslab.bookerapp.model.User;
+import com.sisterslab.bookerapp.model.entity.Book;
+import com.sisterslab.bookerapp.model.enums.BookShelfType;
+import com.sisterslab.bookerapp.model.entity.User;
 import jakarta.persistence.*;
 import lombok.Getter;
 import lombok.Setter;

@@ -1,5 +1,6 @@
-package com.sisterslab.bookerapp.model;
+package com.sisterslab.bookerapp.model.entity;
 
+import com.sisterslab.bookerapp.model.enums.UserRole;
 import jakarta.persistence.*;
 import lombok.Getter;
 import lombok.Setter;
@@ -33,6 +34,7 @@ public class User {
     @Column(name = "password", nullable = false)
     private String password;
 
-    @NotBlank(message = "Role cannot be blank")
-    private String role;
+    @Enumerated(EnumType.STRING)
+    @Column(nullable = false)
+    private UserRole role;
 }

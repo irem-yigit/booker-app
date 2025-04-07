@@ -1,6 +1,6 @@
 package com.sisterslab.bookerapp.controller;
 
-import com.sisterslab.bookerapp.model.Book;
+import com.sisterslab.bookerapp.model.entity.Book;
 import com.sisterslab.bookerapp.service.BookService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;

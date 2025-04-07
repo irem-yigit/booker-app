@@ -1,7 +1,7 @@
 package com.sisterslab.bookerapp.controller;
 
-import com.sisterslab.bookerapp.model.BookShelf;
-import com.sisterslab.bookerapp.model.BookShelfType;
+import com.sisterslab.bookerapp.model.entity.BookShelf;
+import com.sisterslab.bookerapp.model.enums.BookShelfType;
 import com.sisterslab.bookerapp.service.BookShelfService;
 import jakarta.validation.Valid;
 import org.springframework.beans.factory.annotation.Autowired;

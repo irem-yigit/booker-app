@@ -2,7 +2,7 @@ package com.sisterslab.bookerapp.service;
 
 import com.sisterslab.bookerapp.exception.ResourceNotFoundException;
 import com.sisterslab.bookerapp.exception.ValidationException;
-import com.sisterslab.bookerapp.model.User;
+import com.sisterslab.bookerapp.model.entity.User;
 import com.sisterslab.bookerapp.repository.UserRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.core.GrantedAuthority;

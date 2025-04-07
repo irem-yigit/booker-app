@@ -2,7 +2,7 @@ package com.sisterslab.bookerapp.service;
 
 import com.sisterslab.bookerapp.exception.ResourceNotFoundException;
 import com.sisterslab.bookerapp.exception.ValidationException;
-import com.sisterslab.bookerapp.model.Book;
+import com.sisterslab.bookerapp.model.entity.Book;
 import com.sisterslab.bookerapp.repository.BookRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;

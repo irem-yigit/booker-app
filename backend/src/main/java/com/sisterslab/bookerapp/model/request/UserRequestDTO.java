@@ -1,12 +1,14 @@
 package com.sisterslab.bookerapp.model.request;
 
+import com.sisterslab.bookerapp.model.enums.UserRole;
 import jakarta.persistence.Column;
+import jakarta.persistence.EnumType;
+import jakarta.persistence.Enumerated;
 import lombok.Getter;
 import lombok.Setter;
 
 import javax.validation.constraints.Email;
 import javax.validation.constraints.NotBlank;
-import javax.validation.constraints.NotNull;
 import javax.validation.constraints.Size;
 
 @Getter
@@ -25,6 +27,7 @@ public class UserRequestDTO {
     @Size(min = 6, message = "Password must be at least 6 characters")
     private String password;
 
-    @NotBlank(message = "Role cannot be blank")
-    private String role;
+    @Enumerated(EnumType.STRING)
+    @Column(nullable = false)
+    private UserRole role;
 }
