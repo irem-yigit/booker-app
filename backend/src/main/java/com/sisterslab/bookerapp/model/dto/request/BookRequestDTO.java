@@ -1,4 +1,4 @@
-package com.sisterslab.bookerapp.model.request;
+package com.sisterslab.bookerapp.model.dto.request;
 
 import jakarta.persistence.Column;
 import lombok.Getter;

@@ -1,6 +1,7 @@
 package com.sisterslab.bookerapp.service;
 
 import com.sisterslab.bookerapp.model.entity.User;
+import com.sisterslab.bookerapp.model.enums.UserRole;
 import com.sisterslab.bookerapp.repository.UserRepository;
 import jakarta.validation.ValidationException;
 import org.junit.Test;
@@ -35,7 +36,7 @@ public class UserServiceTest {
         User user = new User();
         user.setEmail("test@example.com");
         user.setPassword("password123");
-        user.setRole("USER");
+        user.setRole(UserRole.valueOf("USER"));
 
         when(userRepository.existsByEmail(user.getEmail())).thenReturn(true);
 
@@ -55,7 +56,7 @@ public class UserServiceTest {
         User user = new User();
         user.setEmail("test@example.com");
         user.setPassword("password123");
-        user.setRole("USER");
+        user.setRole(UserRole.valueOf("USER"));
 
         when(userRepository.existsByEmail(user.getEmail())).thenReturn(false);
         when(userRepository.save(any(User.class))).thenReturn(user);
@@ -75,7 +76,7 @@ public class UserServiceTest {
         User user = new User();
         user.setEmail("test@example.com");
         user.setPassword("password123");
-        user.setRole("USER");
+        user.setRole(UserRole.valueOf("USER"));
 
         when(userRepository.findAll()).thenReturn(List.of(user));
 
@@ -94,7 +95,7 @@ public class UserServiceTest {
         User user = new User();
         user.setEmail("test@example.com");
         user.setPassword("password123");
-        user.setRole("USER");
+        user.setRole(UserRole.valueOf("USER"));
 
         when(userRepository.findById(1L)).thenReturn(Optional.of(user));
 
@@ -126,7 +127,7 @@ public class UserServiceTest {
         User user = new User();
         user.setEmail("test@example.com");
         user.setPassword("password123");
-        user.setRole("USER");
+        user.setRole(UserRole.valueOf("USER"));
 
         when(userRepository.findByEmail(user.getEmail())).thenReturn(Optional.of(user));
 
@@ -146,7 +147,7 @@ public class UserServiceTest {
         User user = new User();
         user.setEmail("test@example.com");
         user.setPassword("password123");
-        user.setRole("USER");
+        user.setRole(UserRole.valueOf("USER"));
 
         when(userRepository.findByEmail(user.getEmail())).thenReturn(Optional.empty());
 

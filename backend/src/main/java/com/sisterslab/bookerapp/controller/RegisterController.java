@@ -1,7 +1,7 @@
 package com.sisterslab.bookerapp.controller;
 
 import com.sisterslab.bookerapp.model.entity.User;
-import com.sisterslab.bookerapp.model.request.UserRequestDTO;
+import com.sisterslab.bookerapp.model.dto.request.UserRequestDTO;
 import com.sisterslab.bookerapp.service.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.PostMapping;

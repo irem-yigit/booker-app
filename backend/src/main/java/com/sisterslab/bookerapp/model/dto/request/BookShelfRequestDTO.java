@@ -1,4 +1,4 @@
-package com.sisterslab.bookerapp.model.request;
+package com.sisterslab.bookerapp.model.dto.request;
 
 import com.sisterslab.bookerapp.model.entity.Book;
 import com.sisterslab.bookerapp.model.enums.BookShelfType;

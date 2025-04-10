@@ -1,7 +1,8 @@
 package com.sisterslab.bookerapp.controller;
 
 import com.sisterslab.bookerapp.model.entity.User;
-import com.sisterslab.bookerapp.model.request.UserRequestDTO;
+import com.sisterslab.bookerapp.model.dto.request.UserRequestDTO;
+import com.sisterslab.bookerapp.model.enums.UserRole;
 import com.sisterslab.bookerapp.service.UserService;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
@@ -42,7 +43,7 @@ public class RegisterControllerTest {
         userRequestDTO.setUsername("John Doe");
         userRequestDTO.setEmail("john@example.com");
         userRequestDTO.setPassword("password123");
-        userRequestDTO.setRole("USER");
+        userRequestDTO.setRole(UserRole.valueOf("USER"));
 
         User user = new User();
         user.setUsername(userRequestDTO.getUsername());
