@@ -4,9 +4,7 @@ import jakarta.persistence.*;
 import lombok.Getter;
 import lombok.Setter;
 
-import javax.validation.constraints.NotBlank;
-import javax.validation.constraints.NotNull;
-import javax.validation.constraints.Size;
+import javax.validation.constraints.*;
 
 @Entity
 @Table(name = "book")
@@ -34,10 +32,12 @@ public class Book {
 
     @NotNull(message = "Isbn cannot be null")
     @Size(min = 13, max = 13, message = "ISBN must be between 13 characters")
+    @Pattern(regexp = "^[0-9X]*$", message = "ISBN must only contain numbers and 'X'")
     @Column(name = "book_isbn", nullable = false, unique = true)
     private String isbn;
 
     @NotNull(message = "Page count cannot be null")
+    @Min(value = 1, message = "Page count must be at least 1")
     @Column(name = "book_pagecount", nullable = false)
     private int pageCount;
 
