@@ -1,9 +1,12 @@
 package com.sisterslab.bookerapp.controller;
 
+import com.sisterslab.bookerapp.model.dto.response.UserResponseDTO;
 import com.sisterslab.bookerapp.model.entity.User;
 import com.sisterslab.bookerapp.model.dto.request.UserRequestDTO;
 import com.sisterslab.bookerapp.service.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.HttpStatus;
+import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -24,12 +27,8 @@ public class RegisterController {
 
     //CREATE - Register user
     @PostMapping("/register")
-    public User addUser(@Valid @RequestBody UserRequestDTO userRequestDTO) {
-        User user = new User();
-        user.setUsername(userRequestDTO.getUsername());
-        user.setEmail(userRequestDTO.getEmail());
-        user.setPassword(userRequestDTO.getPassword());
-        user.setRole(userRequestDTO.getRole());
-        return userService.addUser(user);
+    public ResponseEntity<UserResponseDTO> registerUser(@Valid @RequestBody UserRequestDTO userRequestDTO) {
+        UserResponseDTO registeredUser = userService.registerUser(userRequestDTO);
+        return new ResponseEntity<>(registeredUser, HttpStatus.CREATED);
     }
 }

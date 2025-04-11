@@ -61,14 +61,14 @@ public class SecurityConfig {
         return http.build();
     }
 
-    // 🌍 CORS ayarları burada
+    // CORS settings
     @Bean
     public CorsConfigurationSource corsConfigurationSource() {
         CorsConfiguration config = new CorsConfiguration();
         config.setAllowedOrigins(List.of("http://localhost:5500")); // frontend URL
         config.setAllowedMethods(List.of("GET", "POST", "PUT", "DELETE", "OPTIONS"));
         config.setAllowedHeaders(List.of("*"));
-        config.setAllowCredentials(true); // Eğer oturum/cookie kullanıyorsan
+        config.setAllowCredentials(true); // Eğer oturum/cookie kullanıyorsan - Cookies ve kimlik doğrulama verilerini kabul eder
 
         UrlBasedCorsConfigurationSource source = new UrlBasedCorsConfigurationSource();
         source.registerCorsConfiguration("/**", config);

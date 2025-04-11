@@ -1,5 +1,7 @@
 package com.sisterslab.bookerapp.controller;
 
+import com.sisterslab.bookerapp.model.dto.request.UserRequestDTO;
+import com.sisterslab.bookerapp.model.dto.response.UserResponseDTO;
 import com.sisterslab.bookerapp.model.entity.User;
 import com.sisterslab.bookerapp.service.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -20,27 +22,26 @@ public class UserController {
         this.userService = userService;
     }
 
-    //READ - List all users
+    //READ - Get all users
     @GetMapping
-    public List<User> getAllUsers() {
-        return userService.getAllUsers();
+    public ResponseEntity<List<UserResponseDTO>> getAllUsers() {
+        return ResponseEntity.ok(userService.getAllUsers());
     }
 
-    //READ -  List a user by ID
+    //READ -  Get user by ID
     @GetMapping("/{id}")
-    public User getUserById(@PathVariable Long id) {
-        return userService.getUserById(id);
+    public ResponseEntity<UserResponseDTO> getUserById(@PathVariable Long id) {
+        return ResponseEntity.ok(userService.getUserByIdDTO(id));
     }
 
-    //UPDATE - Update the user by id
+    //UPDATE - Update user by id
     @PutMapping("/{id}")
-    public ResponseEntity<User> updateUser(@Valid @PathVariable Long id, @RequestBody User user){
-        user.setId(id);
-        User updatedUser = userService.updateUser(user);
-        return ResponseEntity.ok(updatedUser);
+    public ResponseEntity<UserResponseDTO> updateUser(@PathVariable Long id, @RequestBody @Valid UserRequestDTO dto){
+        UserResponseDTO updated = userService.updateUser(id, dto);
+        return ResponseEntity.ok(updated);
     }
 
-    //DELETE - Delete the user by id
+    //DELETE - Delete user by id
     @DeleteMapping("/{id}")
     public ResponseEntity<Void> deleteUser(@PathVariable Long id) {
         userService.deleteUser(id);

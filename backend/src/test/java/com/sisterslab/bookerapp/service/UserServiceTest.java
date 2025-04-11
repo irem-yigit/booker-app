@@ -1,5 +1,7 @@
 package com.sisterslab.bookerapp.service;
 
+import com.sisterslab.bookerapp.model.dto.request.UserRequestDTO;
+import com.sisterslab.bookerapp.model.dto.response.UserResponseDTO;
 import com.sisterslab.bookerapp.model.entity.User;
 import com.sisterslab.bookerapp.model.enums.UserRole;
 import com.sisterslab.bookerapp.repository.UserRepository;
@@ -31,18 +33,18 @@ public class UserServiceTest {
     private UserService userService;
 
     @Test
-    public void addUser_UserAlreadyExists_ThrowsValidationException() {
-        //Given
-        User user = new User();
-        user.setEmail("test@example.com");
-        user.setPassword("password123");
-        user.setRole(UserRole.valueOf("USER"));
+    public void registerUser_UserAlreadyExists_ThrowsValidationException() {
+        // Given
+        UserRequestDTO userRequestDTO = new UserRequestDTO();
+        userRequestDTO.setEmail("test@example.com");
+        userRequestDTO.setPassword("password123");
+        userRequestDTO.setRole(UserRole.valueOf("USER"));
 
-        when(userRepository.existsByEmail(user.getEmail())).thenReturn(true);
+        when(userRepository.existsByEmail(userRequestDTO.getEmail())).thenReturn(true);
 
         //When
         ValidationException exception = assertThrows(ValidationException.class, () -> {
-            userService.addUser(user);
+            userService.registerUser(userRequestDTO);
         });
 
         //Then
@@ -51,28 +53,39 @@ public class UserServiceTest {
     }
 
     @Test
-    public void addUser_NewUser_SavesUserAndCart() {
-        //Given
-        User user = new User();
-        user.setEmail("test@example.com");
-        user.setPassword("password123");
-        user.setRole(UserRole.valueOf("USER"));
+    public void registerUser_NewUser_SavesUserAndReturnsDTO() {
+        // Given
+        UserRequestDTO userRequestDTO = new UserRequestDTO();
+        userRequestDTO.setEmail("test@example.com");
+        userRequestDTO.setPassword("password123");
+        userRequestDTO.setRole(UserRole.valueOf("USER"));
 
-        when(userRepository.existsByEmail(user.getEmail())).thenReturn(false);
+        User user = new User();
+        user.setEmail(userRequestDTO.getEmail());
+        user.setPassword(userRequestDTO.getPassword());
+        user.setRole(userRequestDTO.getRole());
+
+        UserResponseDTO userResponseDTO = new UserResponseDTO();
+        userResponseDTO.setEmail(user.getEmail());
+        userResponseDTO.setUsername(user.getUsername());
+        userResponseDTO.setRole(String.valueOf(user.getRole()));
+
+        when(userRepository.existsByEmail(userRequestDTO.getEmail())).thenReturn(false);
         when(userRepository.save(any(User.class))).thenReturn(user);
 
-        //When
-        User savedUser = userService.addUser(user);
+        // When
+        UserResponseDTO registeredUser = userService.registerUser(userRequestDTO);
 
-        //Then
-        assertEquals(user.getEmail(), savedUser.getEmail());
-        assertNotNull(savedUser.getPassword()); // Şifre hashlenmiş olmalı
+        // Then
+        assertEquals(userRequestDTO.getEmail(), registeredUser.getEmail());
+        assertNotNull(registeredUser.getUsername());
+        assertEquals(userRequestDTO.getRole(), registeredUser.getRole());
         verify(userRepository).save(any(User.class));
     }
 
     @Test
     public void getAllUsers_ReturnsUserList() {
-        //Given
+        // Given
         User user = new User();
         user.setEmail("test@example.com");
         user.setPassword("password123");
@@ -80,10 +93,10 @@ public class UserServiceTest {
 
         when(userRepository.findAll()).thenReturn(List.of(user));
 
-        //When
-        List<User> users = userService.getAllUsers();
+        // When
+        List<UserResponseDTO> users = userService.getAllUsers();
 
-        //Then
+        // Then
         assertEquals(1, users.size());
         assertEquals(user.getEmail(), users.get(0).getEmail());
         verify(userRepository).findAll();
@@ -91,7 +104,7 @@ public class UserServiceTest {
 
     @Test
     public void getUserById_UserExists_ReturnsUser() {
-        //Given
+        // Given
         User user = new User();
         user.setEmail("test@example.com");
         user.setPassword("password123");
@@ -99,10 +112,10 @@ public class UserServiceTest {
 
         when(userRepository.findById(1L)).thenReturn(Optional.of(user));
 
-        //When
-        User foundUser = userService.getUserById(1L);
+        // When
+        UserResponseDTO foundUser = userService.getUserByIdDTO(1L);
 
-        //Then
+        // Then
         assertEquals(user.getEmail(), foundUser.getEmail());
         verify(userRepository).findById(1L);
     }
@@ -114,7 +127,7 @@ public class UserServiceTest {
 
         //When
         assertThrows(NoSuchElementException.class, () -> {
-            userService.getUserById(1L);
+            userService.getUserByIdDTO(1L);
         });
 
         //Then
